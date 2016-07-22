@@ -1,3 +1,9 @@
+/* 
+ * Author: ckungler
+ *
+ * Created on July 22, 2016, 2:20 PM
+ */
+
 #ifndef HARDWARE_H
 #define	HARDWARE_H
 
