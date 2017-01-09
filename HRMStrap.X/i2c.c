@@ -29,7 +29,7 @@ void I2CInit(void) {
 
     SSP1CON1bits.SSPM = 0b1000; // Master mode
     SSP1ADD = 3; //SCL = Fsoc/(4*(ADD+1)) 0 1 2 not supported need <400kHz for max
-    SSP1CON1bits.SSPEN =;
+    SSP1CON1bits.SSPEN = 1;
 }
 
 I2CResult i2cRead(uint8_t id, uint8_t address, uint8_t* data, size_t len) {
