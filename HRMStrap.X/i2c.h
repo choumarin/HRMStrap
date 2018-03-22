@@ -20,8 +20,8 @@ extern "C" {
     } I2CResult;
 
     typedef struct {
-        I2CResult(*read)(uint8_t address);
-        I2CResult(*write)(uint8_t address, uint8_t* data, size_t len);
+        I2CResult(*read)(uint8_t id, uint8_t address, uint8_t* data, size_t len);
+        I2CResult(*write)(uint8_t id, uint8_t address, uint8_t* data, size_t len);
     } I2CObject;
 
     extern I2CObject I2C;

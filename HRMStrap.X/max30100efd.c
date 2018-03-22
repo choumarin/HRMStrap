@@ -6,6 +6,7 @@
 
 #include "max30100efd.h"
 #include "i2c.h"
+#include "hardware.h"
 
 #define MAX_ID              0xAE
 #define MAX_MODE            0x06
@@ -33,28 +34,31 @@ void maxISR(void);
 void maxRequestHeartRate(void);
 
 void Max30100efdInit(void) {
+
+    HRM_EN_TRIS = 0;
+    HRM_EN = 1;
+
     Max.ISR = maxISR;
     Max.requestHeartRate = maxRequestHeartRate;
-
     I2CInit();
 }
 
 void maxISR(void) {
     uint8_t data[1];
     // read int
-    i2cRead(MAX_ID, MAX_INT, data, 1);
+    I2C.read(MAX_ID, MAX_INT, data, 1);
     if (data[0] & MAX_INT_HR_RDY) {
-        
+
     }
     // turn off
     data[0] = MAX_MODE_SHDN;
-    i2cWrite(MAX_ID, MAX_MODE, data, 1);
+    I2C.write(MAX_ID, MAX_MODE, data, 1);
 }
 
 void maxRequestHeartRate(void) {
     uint8_t data[1];
     // turn HR on
     data[0] = MAX_MODE_HR_ONLY;
-    i2cWrite(MAX_ID, MAX_MODE, data, 1);
+    I2C.write(MAX_ID, MAX_MODE, data, 1);
     // wait for interrupt
 }

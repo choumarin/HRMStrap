@@ -6,6 +6,7 @@
 
 #include "init.h"
 #include "max30100efd.h"
+#include "i2c.h"
 
 void initClock();
 void initPeripherals();
@@ -20,6 +21,7 @@ void initClock() {
 }
 
 void initPeripherals() {
+//    I2CInit();
     Max30100efdInit();
     
 }

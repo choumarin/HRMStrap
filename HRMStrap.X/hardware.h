@@ -13,6 +13,8 @@
 extern "C" {
 #endif /* __cplusplus */
 
+#define _XTAL_FREQ 8000000UL // 8MHz
+    
     // PIN Definitions
     
 #define HRM_INT PORTCbits.RC5
@@ -25,9 +27,13 @@ extern "C" {
 #define DATA_TX_TRIS TRISCbits.TRISC0
 #define DATA_TX 
     
-#define SCL_TRIS TRISAbits.TRISA5
-#define SDA_TRIS TRISAbits.TRISA4
+#define SCL_PIN 0b00101 //RA5
+#define SDA_PIN 0b00100 //RA4
 
+#define SCL_PPS RA5PPSbits.RA5PPS
+#define SDA_PPS RA4PPSbits.RA4PPS
+    
+    
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */
